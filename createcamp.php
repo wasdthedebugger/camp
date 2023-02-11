@@ -12,14 +12,15 @@ if (isset($_POST['title'])) {
     //strip image name and replace spaces with underscore
     $title = $_POST['title'];
     $content = $_POST['content'];
+    $map = $_POST['map'];
     $image = str_replace(' ', '_', $_FILES['image']['name']);
     $username = $_SESSION['username'];
     $date = date("Y-m-d");
-    $sql = "INSERT INTO camps (title, content, image, username, date) VALUES ('$title', '$content', '$image', '$username', '$date')";
+    $sql = "INSERT INTO camps (title, content, image, username, date, map) VALUES ('$title', '$content', '$image', '$username', '$date', '$map')";
     $result = mysqli_query($conn, $sql);
     if ($result) {
         move_uploaded_file($_FILES['image']['tmp_name'], "images/" . $image);
-        header("Location: campdetails.php");
+        header("Location: index.php");
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
@@ -44,7 +45,7 @@ if (isset($_POST['title'])) {
 
     <div class="container">
 
-<!-- a bootstrap form to enter campaign title, content and a image -->
+        <!-- a bootstrap form to enter campaign title, content and a image -->
         <form action="createcamp.php" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
@@ -58,6 +59,11 @@ if (isset($_POST['title'])) {
                 <label for="image" class="form-label">Image</label>
                 <input class="form-control" type="file" id="image" name="image">
             </div>
+            <div class="mb-3">
+                <label for="map" class="form-label">Map</label>
+                <input class="form-control" type="text" id="map" name="map" placeholder="Paste the embed HTML">
+            </div>
+
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 
@@ -89,7 +95,7 @@ if (isset($_POST['title'])) {
         }
         ?>
     </div>
-        <?php include("footer.php"); ?>
+    <?php include("footer.php"); ?>
 </body>
 
 </html>

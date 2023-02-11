@@ -1,3 +1,3 @@
 <div id="footer">
-    &copy 2023 - Nikas Ghimire, All Rights Reserved
+    &copy 2023 - Shelter Linkers, All Rights Reserved
 </div>

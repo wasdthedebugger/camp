@@ -13,20 +13,19 @@ if (isset($_SESSION['user_id'])) {
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) == 1) {
             $row = mysqli_fetch_assoc($result);
-                $_SESSION['username'] = $row['username'];
-                $_SESSION['user_id'] = $row['user_id'];
-                $_SESSION['role'] = $row['role'];
-                //0 = admin, 1 = teacher, 2 = student
-                if($_SESSION['role'] == 0){
-                    $_SESSION['admin'] = true;
-                } else if($_SESSION['role'] == 1){
-                    $_SESSION['teacher'] = true;
-                } else if($_SESSION['role'] == 2){
-                    $_SESSION['student'] = true;
-                }
+            $_SESSION['username'] = $row['username'];
+            $_SESSION['user_id'] = $row['user_id'];
+            $_SESSION['role'] = $row['role'];
+            //0 = admin, 1 = teacher, 2 = student
+            if ($_SESSION['role'] == 0) {
+                $_SESSION['admin'] = true;
+            } else if ($_SESSION['role'] == 1) {
+                $_SESSION['teacher'] = true;
+            } else if ($_SESSION['role'] == 2) {
+                $_SESSION['student'] = true;
+            }
 
-                header("Location: index.php");
-                
+            header("Location: index.php");
         } else {
             $invalid = true;
         }
@@ -55,7 +54,7 @@ if (isset($_SESSION['user_id'])) {
     <!-- login form -->
     <div class="container">
         <?php
-        if(isset($invalid)){
+        if (isset($invalid)) {
             echo "<div class='alert alert-danger' role='alert'>
             Invalid username or password!
           </div>";

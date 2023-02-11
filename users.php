@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +33,9 @@
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
+                            <th scope="col">ID</th>
                             <th scope="col">Username</th>
+                            <th scope="col">Bio</th>
                             <th scope="col">Role</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -36,9 +46,15 @@
                             $username = $row['username'];
                         ?>
                             <tr>
+                                <td><?php echo $row['user_id']; ?></td>
                                 <td><b><?php echo ($row['username']); ?></b></td>
-                                <td><?php if($row['role']==0){echo("Admin");}else{echo("User");}?></td>
-                                <td><a class="btn btn-danger" href="deleteuser.php?id=<?php echo($username); ?>">Deactivate</a></td>
+                                <td><?php echo(@$row['content']); ?></td>
+                                <td><?php if ($row['role'] == 0) {
+                                        echo ("Admin");
+                                    } else {
+                                        echo ("User");
+                                    } ?></td>
+                                <td><a class="btn btn-danger" href="deleteuser.php?id=<?php echo ($username); ?>">Deactivate</a></td>
                             </tr>
 
                         <?php
