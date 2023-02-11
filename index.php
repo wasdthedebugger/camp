@@ -14,7 +14,7 @@ include("global/functions.php");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="/global/logo.png">
+    <link rel="icon" type="image/x-icon" href="global/logo.png">
     <title>Home</title>
 </head>
 
@@ -43,8 +43,8 @@ include("global/functions.php");
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top" src="https://img.freepik.com/free-photo/online-message-blog-chat-communication-envelop-graphic-icon-concept_53876-139717.jpg?w=2000" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">Campaings</h5>
-                            <p class="card-text">Total Campaings: <?php echo $totalBlogs; ?></p>
+                            <h5 class="card-title">Campaigns</h5>
+                            <p class="card-text">Total Campaigns: <?php echo $totalBlogs; ?></p>
                             <a href="campdetails.php" class="btn btn-primary">See Details</a>
                         </div>
                     </div>
